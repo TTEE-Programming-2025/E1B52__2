@@ -64,8 +64,7 @@ void drawTriangle() {
 
     if (ch < 'a' || ch > 'n') {
         printf("è¼¸å…¥éŒ¯èª¤ï¼å¿…é ˆæ˜¯ a~n çš„å­—å…ƒã€‚\n");
-        printf("\næŒ‰Enteréµè¿”å›ä¸»é¸å–®...\n");
-        getchar();
+        waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n");  
         return;
     }
 
@@ -79,8 +78,7 @@ void drawTriangle() {
         printf("\n");
     }
     printf("--------------------------------\n");
-    printf("\næŒ‰Enteréµè¿”å›ä¸»é¸å–®...\n");
-    getchar();
+    waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
 }
 
 // é¡¯ç¤ºä¹˜æ³•è¡¨
@@ -92,8 +90,7 @@ void printMultiplicationTable() {
 
     if (n < 1 || n > 9) {
         printf("è¼¸å…¥éŒ¯èª¤ï¼å¿…é ˆæ˜¯ 1 åˆ° 9 ä¹‹é–“ã€‚\n");
-        printf("\næŒ‰Enteréµè¿”å›ä¸»é¸å–®...\n");
-        getchar();
+        waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
         return;
     }
 
@@ -107,8 +104,7 @@ void printMultiplicationTable() {
         printf("\n");
     }
     printf("--------------------------------\n");
-    printf("\næŒ‰Enteréµè¿”å›ä¸»é¸å–®...\n");
-    getchar();
+    waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
 }
 
 int main() {
@@ -130,8 +126,7 @@ int main() {
         } else {
             printf("\nå¯†ç¢¼éŒ¯èª¤ï¼è«‹å†è©¦ä¸€æ¬¡ã€‚\n");
             attempt++;
-            printf("\næŒ‰Enteréµç¹¼çºŒ...\n");
-            getchar();
+            waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
         }
     }
 
@@ -168,8 +163,7 @@ int main() {
                 break;
             }
             default:
-                printf("\né¸é …éŒ¯èª¤ï¼Œè«‹é‡æ–°è¼¸å…¥ (æŒ‰Enteréµç¹¼çºŒ)...\n");
-                getchar();
+                waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
                 break;
         }
     }
