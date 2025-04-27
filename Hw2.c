@@ -11,7 +11,7 @@ void clearScreen() {
     system("cls||clear");
 }
 
-// æ¸…é™¤è¼¸å…¥ç·©è¡å€
+
 void flushInput() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
@@ -22,14 +22,14 @@ void waitForEnter(const char *message) {
     flushInput();
     getchar();
 }
-// é¡¯ç¤ºæ­¡è¿ç•«é¢
+
 void printWelcomeScreen() {
     printf("********************************************************************\n");
     printf("*                                                                  *\n");
-    printf("*                     E1B52 ç¨‹å¼è¨­è¨ˆå°ˆå±¬ç•«é¢               *\n");
+    printf("*                     E1B52 µ{¦¡³]­p±MÄİµe­±¢                     *\n");
     printf("*                                                                  *\n");
     printf("*------------------------------------------------------------------*\n");
-    printf("*      ä½œè€…: %s    *\n", AUTHOR);
+    printf("*      §@ªÌ: %s                 *\n", AUTHOR);
     printf("*------------------------------------------------------------------*\n");
     printf("*                                                                  *\n");
     printf("*   EEEEE  1    BBBBB   55555  22222                               *\n");
@@ -39,37 +39,37 @@ void printWelcomeScreen() {
     printf("*   EEEEE  1    BBBBB   55555  22222                               *\n");
     printf("*                                                                  *\n");
     printf("*------------------------------------------------------------------*\n");
-    printf("*      ğŸ” è«‹è¼¸å…¥4ä½æ•¸å¯†ç¢¼ä»¥ç¹¼çºŒ (å¯†ç¢¼æç¤ºï¼š2025)  *\n");
+    printf("*      ½Ğ¿é¤J4¦ì¼Æ±K½X¥HÄ~Äò (±K½X´£¥Ü¡G2025)                      *\n");
     printf("*                                                                  *\n");
     printf("********************************************************************\n");
 }
 
-// é¡¯ç¤ºä¸»é¸å–®
+
 void printMenu() {
     clearScreen();
     printf("------------------------------\n");
-    printf("| a. ç•«å‡ºç›´è§’ä¸‰è§’å½¢             |\n");
-    printf("| b. é¡¯ç¤ºä¹˜æ³•è¡¨                 |\n");
-    printf("| c. çµæŸ                      |\n");
+    printf("| a. µe¥Xª½¨¤¤T¨¤§Î            |\n");
+    printf("| b. Åã¥Ü­¼ªkªí                 |\n");
+    printf("| c. µ²§ô                       |\n");
     printf("------------------------------\n");
-    printf("è«‹é¸æ“‡ (a/b/c): ");
+    printf("½Ğ¿ï¾Ü (a/b/c): ");
 }
 
-// ç•«å‡ºç›´è§’ä¸‰è§’å½¢
+
 void drawTriangle() {
     char ch;
-    printf("è«‹è¼¸å…¥ä¸€å€‹å­—å…ƒ (a~n): ");
+    printf("½Ğ¿é¤J¤@­Ó¦r¤¸ (a~n): ");
     scanf(" %c", &ch);
     flushInput();
 
     if (ch < 'a' || ch > 'n') {
-        printf("è¼¸å…¥éŒ¯èª¤ï¼å¿…é ˆæ˜¯ a~n çš„å­—å…ƒã€‚\n");
+        printf("\n¿é¤J¿ù»~¡I¥²¶·¬O a~n ªº¦r¤¸¡C\n");
         waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n");  
         return;
     }
 
     clearScreen();
-    printf("ç›´è§’ä¸‰è§’å½¢ï¼š\n");
+    printf("ª½¨¤¤T¨¤§Î¡G\n");
     printf("--------------------------------\n");
     for (char i = 'a'; i <= ch; i++) {
         for (char j = 'a'; j <= i; j++) {
@@ -81,21 +81,21 @@ void drawTriangle() {
     waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
 }
 
-// é¡¯ç¤ºä¹˜æ³•è¡¨
+
 void printMultiplicationTable() {
     int n;
-    printf("è«‹è¼¸å…¥ä¸€å€‹æ•´æ•¸ (1~9): ");
+    printf("½Ğ¿é¤J¤@­Ó¾ã¼Æ (1~9): ");
     scanf("%d", &n);
     flushInput();
 
     if (n < 1 || n > 9) {
-        printf("è¼¸å…¥éŒ¯èª¤ï¼å¿…é ˆæ˜¯ 1 åˆ° 9 ä¹‹é–“ã€‚\n");
+        printf("\n¿é¤J¿ù»~¡I¥²¶·¬O 1 ¨ì 9 ¤§¶¡¡C\n");
         waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
         return;
     }
 
     clearScreen();
-    printf("%d x %d çš„ä¹˜æ³•è¡¨ï¼š\n", n, n);
+    printf("%d x %d ªº­¼ªkªí¡G\n", n, n);
     printf("--------------------------------\n");
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
@@ -112,30 +112,30 @@ int main() {
     int attempt = 0;
     int correct = 0;
 
-    // æ­¡è¿ç•«é¢åŠå¯†ç¢¼è¼¸å…¥
+
     while (attempt < 3) {
         clearScreen();
         printWelcomeScreen();
-        printf("\nè«‹è¼¸å…¥å¯†ç¢¼ï¼š");
-        scanf("%9s", inputPassword);  // é™åˆ¶æœ€å¤šè®€9å€‹å­—å…ƒï¼Œé˜²æ­¢æº¢ä½
+        printf("\n½Ğ¿é¤J±K½X¡G");
+        scanf("%9s", inputPassword);  
         flushInput();
 
         if (strcmp(inputPassword, PASSWORD) == 0) {
             correct = 1;
             break;
         } else {
-            printf("\nå¯†ç¢¼éŒ¯èª¤ï¼è«‹å†è©¦ä¸€æ¬¡ã€‚\n");
+            printf("\n±K½X¿ù»~¡I½Ğ¦A¸Õ¤@¦¸¡C\n");
             attempt++;
             waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
         }
     }
 
     if (!correct) {
-        printf("\né€£çºŒä¸‰æ¬¡è¼¸å…¥éŒ¯èª¤ï¼Œç¨‹å¼çµæŸã€‚\n");
+        printf("\n³sÄò¤T¦¸¿é¤J¿ù»~¡Aµ{¦¡µ²§ô¡C\n");
         return 0;
     }
 
-    // ä¸»é¸å–®å¾ªç’°
+
     char choice;
     while (1) {
         printMenu();
@@ -152,17 +152,18 @@ int main() {
                 break;
             case 'c': {
                 char confirm;
-                printf("ç¢ºå®šè¦çµæŸå—ï¼Ÿ(y/n): ");
+                printf("½T©w­nµ²§ô¶Ü¡H(y/n): ");
                 scanf(" %c", &confirm);
                 flushInput();
                 confirm = tolower(confirm);
                 if (confirm == 'y') {
-                    printf("\nç¨‹å¼çµæŸï¼Œè¬è¬ä½¿ç”¨ï¼ğŸ‘‹\n");
+                    printf("\nµ{¦¡µ²§ô¡AÁÂÁÂ¨Ï¥Î¡I\n");
                     return 0;
                 }
                 break;
             }
             default:
+            	printf("\n¿ï¶µ¿ù»~¡A½Ğ­«·s¿é¤J¡C\n"); 
                 waitForEnter("\n«öEnterÁäªğ¦^¥D¿ï³æ...\n"); 
                 break;
         }
