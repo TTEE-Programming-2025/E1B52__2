@@ -6,7 +6,7 @@
 #define PASSWORD "2025"
 #define AUTHOR "E1B52-YourName"
 
-// 清除螢幕
+
 void clearScreen() {
     system("cls||clear");
 }
