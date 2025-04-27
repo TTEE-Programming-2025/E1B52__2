@@ -17,6 +17,11 @@ void flushInput() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+void waitForEnter(const char *message) {
+    printf("%s", message);
+    flushInput();
+    getchar();
+}
 // 顯示歡迎畫面
 void printWelcomeScreen() {
     printf("********************************************************************\n");
