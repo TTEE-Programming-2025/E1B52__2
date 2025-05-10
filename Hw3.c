@@ -60,3 +60,14 @@ void displaySeats() {
     }
 }
 
+void arrangeForYou(int n) {
+    int count = 0;
+    srand((unsigned)time(NULL));
+    while (count < n) {
+        int r = rand() % ROWS;
+        int c = rand() % COLS;
+        if (seats[r][c] == '*') {
+            seats[r][c] = '@';
+            count++;
+        }
+    }
