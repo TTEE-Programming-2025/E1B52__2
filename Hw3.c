@@ -42,6 +42,21 @@ void displayMenu() {
     printf("d. Exit\n");
     printf("-----------------------------\n");
 }
+//InitializeSeats
+void initializeSeats() {
+    for (int i = 0; i < ROWS; ++i)
+        for (int j = 0; j < COLS; ++j)
+            seats[i][j] = '*';
+}
 
-
+//DisplaySeats
+void displaySeats() {
+    printf(" 123456789\n");
+    for (int i = ROWS - 1; i >= 0; --i) {
+        printf("%d", i + 1);
+        for (int j = 0; j < COLS; ++j)
+            printf("%c", seats[i][j]);
+        printf("\n");
+    }
+}
 
