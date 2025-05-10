@@ -34,4 +34,15 @@ void printWelcomeScreen() {
     printf("********************************************************************\n");
 }
 
+// Main Menu
+void displayMenu() {
+    cout << "\n-----------------------------" << endl;
+    cout << "[Booking System]" << endl;
+    cout << "a. Available seats" << endl;
+    cout << "b. Arrange for you" << endl;
+    cout << "c. Choose by yourself" << endl;
+    cout << "d. Exit" << endl;
+    cout << "-----------------------------" << endl;
+}
+
 
