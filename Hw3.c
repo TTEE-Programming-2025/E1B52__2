@@ -1,18 +1,16 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <cstdio>
-#include <cstring>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
-using namespace std;
+#define AUTHOR "simon"
 
-#define AUTHOR "simon"  
-
-const int ROWS = 9;
-const int COLS = 9;
+  
+#define ROWS 9
+#define COLS 9
 char seats[ROWS][COLS];
 
-
+// personal profile
 void printWelcomeScreen() {
     printf("********************************************************************\n");
     printf("*                                                                  *\n");
@@ -36,13 +34,14 @@ void printWelcomeScreen() {
 
 // Main Menu
 void displayMenu() {
-    cout << "\n-----------------------------" << endl;
-    cout << "[Booking System]" << endl;
-    cout << "a. Available seats" << endl;
-    cout << "b. Arrange for you" << endl;
-    cout << "c. Choose by yourself" << endl;
-    cout << "d. Exit" << endl;
-    cout << "-----------------------------" << endl;
+    printf("\n-----------------------------\n");
+    printf("[Booking System]\n");
+    printf("a. Available seats\n");
+    printf("b. Arrange for you\n");
+    printf("c. Choose by yourself\n");
+    printf("d. Exit\n");
+    printf("-----------------------------\n");
 }
+
 
 
