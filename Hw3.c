@@ -115,4 +115,44 @@ int main() {
     initializeSeats();
 
     char option;
+     do {
+        displayMenu();
+        printf("請選擇功能選項：");
+        scanf(" %c", &option);  
+
+        switch (option) {
+            case 'a':
+                displaySeats();
+                break;
+            case 'b': {
+                int n;
+                printf("請輸入欲選幾位座位 (1~4)：");
+                scanf("%d", &n);
+                if (n >= 1 && n <= 4)
+                    arrangeForYou(n);
+                else
+                    printf("輸入錯誤！\n");
+                break;
+            }
+            case 'c': {
+                int n;
+                printf("請輸入想選幾位座位 (1~4)：");
+                scanf("%d", &n);
+                if (n >= 1 && n <= 4)
+                    chooseByYourself(n);
+                else
+                    printf("輸入錯誤！\n");
+                break;
+            }
+            case 'd':
+                printf("系統結束，再見！\n");
+                break;
+            default:
+                printf("選項錯誤，請重新輸入。\n");
+        }
+    } while (option != 'd');
+    
+    return 0;
+}
+
    
