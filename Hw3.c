@@ -67,7 +67,7 @@ void initializeSeats() {
 //DisplaySeats
 void displaySeats() {
     int i, j;
-  printf(" \\");
+    printf(" \\");
     for (j = 1; j <= COLS; ++j)
         printf("%d", j);
     printf("\n");
@@ -88,7 +88,7 @@ void arrangeForYou(int numSeats) {
     srand((unsigned)time(NULL));
     int found = 0;
 
-   for (r = 0; r < ROWS && !found; ++r) {
+    for (r = 0; r < ROWS && !found; ++r) {
         for (c = 0; c <= COLS - numSeats; ++c) {
             int available = 1;
             for (i = 0; i < numSeats; ++i) {
@@ -125,9 +125,10 @@ void arrangeForYou(int numSeats) {
 
 void chooseByYourself(int n) {
     int row, col, count = 0;
-     char input[10];
+    char input[10];
+    int i, j;  
     while (count < n) {
-    	printf("Enter seat location (row and column): ");
+        printf("Enter seat location (row and column): ");
         scanf("%s", input);
         if (sscanf(input, "%d-%d", &row, &col) == 2 && row >= 1 && row <= ROWS && col >= 1 && col <= COLS) {
             if (seats[row - 1][col - 1] == '-') {
@@ -141,8 +142,8 @@ void chooseByYourself(int n) {
         }
     }
     displaySeats();
-    for (int i = 0; i < ROWS; ++i)
-        for (int j = 0; j < COLS; ++j)
+    for (i = 0; i < ROWS; ++i)
+        for (j = 0; j < COLS; ++j)
             if (seats[i][j] == '@')
                 seats[i][j] = '*';
 }
