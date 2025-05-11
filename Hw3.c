@@ -71,3 +71,11 @@ void arrangeForYou(int n) {
             count++;
         }
     }
+}
+
+//
+void chooseByYourself(int n) {
+    int row, col;
+    int count = 0;
+    while (count < n) {
+   
