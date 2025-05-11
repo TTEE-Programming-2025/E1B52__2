@@ -78,17 +78,17 @@ void chooseByYourself(int n) {
     int row, col;
     int count = 0;
     while (count < n) {
-    	printf("請輸入座位位置 (row col)：");
+    	printf("Enter seat location (row and column):");
         scanf("%d %d", &row, &col);
         if (row >= 1 && row <= ROWS && col >= 1 && col <= COLS) {
             if (seats[row - 1][col - 1] == '*') {
                 seats[row - 1][col - 1] = '@';
                 count++;
             } else {
-                printf("該座位已被預定，請重新選擇。\n");
+                printf("That seat is already booked. Please choose another one.\n");
             }
         } else {
-            printf("輸入無效，請重新輸入1~9的座位位置。\n");
+            printf("Invalid input. Please enter a seat position between 1 and 9.\n");
         }
     }
 }
@@ -97,18 +97,18 @@ int main() {
     printWelcomeScreen();
 
     char password[10];
-    printf("請輸入密碼：");
+    printf("please enter password");
     scanf("%s", password);
     if (strcmp(password, "2025") != 0) {
-        printf("密碼錯誤，程式結束！\n");
+        printf(" Incorrect password. End the program \n");
         return 0;
     }
 
     char id[10];
-    printf("請輸入4碼的座號（必須以2開頭）：");
+    printf("Please enter a 4-digit seat ID (must start with 2)");
     scanf("%s", id);
     if (strlen(id) != 4 || id[0] != '2') {
-        printf("格式錯誤，返回主選單。\n");
+        printf("Format error, returning to main menu.\n");
         return 0;
     }
 
@@ -117,7 +117,7 @@ int main() {
     char option;
      do {
         displayMenu();
-        printf("請選擇功能選項：");
+        printf("Please select a function option:");
         scanf(" %c", &option);  
 
         switch (option) {
@@ -126,29 +126,29 @@ int main() {
                 break;
             case 'b': {
                 int n;
-                printf("請輸入欲選幾位座位 (1~4)：");
+                printf(" Please enter the number of seats to book (1~4):");
                 scanf("%d", &n);
                 if (n >= 1 && n <= 4)
                     arrangeForYou(n);
                 else
-                    printf("輸入錯誤！\n");
+                    printf("Invalid input! \n");
                 break;
             }
             case 'c': {
                 int n;
-                printf("請輸入想選幾位座位 (1~4)：");
+                printf("Please enter how many seats you want to choose (1~4)");
                 scanf("%d", &n);
                 if (n >= 1 && n <= 4)
                     chooseByYourself(n);
                 else
-                    printf("輸入錯誤！\n");
+                    printf("Invalid input! \n");
                 break;
             }
             case 'd':
-                printf("系統結束，再見！\n");
+                printf("The system is shutting down, goodbye！\n");
                 break;
             default:
-                printf("選項錯誤，請重新輸入。\n");
+                printf("Invalid option, please enter again \n");
         }
     } while (option != 'd');
     
