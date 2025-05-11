@@ -78,4 +78,18 @@ void chooseByYourself(int n) {
     int row, col;
     int count = 0;
     while (count < n) {
+    	printf("請輸入座位位置 (row col)：");
+        scanf("%d %d", &row, &col);
+        if (row >= 1 && row <= ROWS && col >= 1 && col <= COLS) {
+            if (seats[row - 1][col - 1] == '*') {
+                seats[row - 1][col - 1] = '@';
+                count++;
+            } else {
+                printf("該座位已被預定，請重新選擇。\n");
+            }
+        } else {
+            printf("輸入無效，請重新輸入1~9的座位位置。\n");
+        }
+    }
+}
    
