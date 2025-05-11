@@ -115,26 +115,33 @@ int main() {
     printWelcomeScreen();
     
 
-    char password[10];
-    printf("please enter password: ");
-    scanf("%s", password);
-    if (strcmp(password, "2025") != 0) {
-        printf(" Incorrect password. End the program \n");
+    while (attempt < 3) {
+        printf("Please enter password: ");
+        scanf("%s", password);
+        if (strcmp(password, "2025") == 0) {
+            break;
+        } else {
+            printf("Incorrect password. Try again.\n");
+            attempt++;
+        }
+    }
+
+    if (attempt == 3) {
+        printf("Too many incorrect attempts. Program exiting.\n");
         return 0;
     }
 
-    char id[10];
-    printf("Please enter a 4-digit seat ID (must start with 2)");
+    // Seat ID validation
+    printf("Please enter a 4-digit seat ID (must start with 2): ");
     scanf("%s", id);
     if (strlen(id) != 4 || id[0] != '2') {
         printf("Format error, returning to main menu.\n");
         return 0;
     }
-
+    
     initializeSeats();
 
-    char option;
-     do {
+    do {
         displayMenu();
         printf("Please select a function option: ");
         scanf(" %c", &option);  
@@ -147,27 +154,31 @@ int main() {
                 int n;
                 printf(" Please enter the number of seats to book (1~4): ");
                 scanf("%d", &n);
-                if (n >= 1 && n <= 4)
+                if (n >= 1 && n <= 4){
                     arrangeForYou(n);
-                else
+                    displaySeats();
+                }else{
                     printf("Invalid input! \n");
+            }
                 break;
             }
             case 'c': {
                 int n;
                 printf("Please enter how many seats you want to choose (1~4): ");
                 scanf("%d", &n);
-                if (n >= 1 && n <= 4)
+                if (n >= 1 && n <= 4){
                     chooseByYourself(n);
-                else
+                    displaySeats();
+                }else{
                     printf("Invalid input! \n");
+                }
                 break;
             }
             case 'd':
                 printf("The system is shutting down, goodbye¡I\n");
-                break;
+                return 0;
             default:
-                printf("Invalid option, please enter again \n");
+                printf("Invalid menu choice.\n");
         }
     } while (option != 'd');
     
