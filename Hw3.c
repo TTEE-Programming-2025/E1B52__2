@@ -92,4 +92,27 @@ void chooseByYourself(int n) {
         }
     }
 }
+
+int main() {
+    printWelcomeScreen();
+
+    char password[10];
+    printf("請輸入密碼：");
+    scanf("%s", password);
+    if (strcmp(password, "2025") != 0) {
+        printf("密碼錯誤，程式結束！\n");
+        return 0;
+    }
+
+    char id[10];
+    printf("請輸入4碼的座號（必須以2開頭）：");
+    scanf("%s", id);
+    if (strlen(id) != 4 || id[0] != '2') {
+        printf("格式錯誤，返回主選單。\n");
+        return 0;
+    }
+
+    initializeSeats();
+
+    char option;
    
