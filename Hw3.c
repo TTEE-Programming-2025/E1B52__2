@@ -67,18 +67,23 @@ void initializeSeats() {
 //DisplaySeats
 void displaySeats() {
     int i, j;
-    printf(" \\");
+    printf("   \\ ");
     for (j = 1; j <= COLS; ++j)
-        printf("%d", j);
+        printf("%2d", j);
     printf("\n");
     for (i = ROWS - 1; i >= 0; --i) {
-        printf("%d", i + 1);
+        printf("%2d ", i + 1);
         for (j = 0; j < COLS; ++j)
             printf("%c", seats[i][j]);
         printf("\n");
     }
-    printf("\nPress any key to return to main menu...\n");
-    getchar(); getchar();  
+    printf("\n");
+    waitForUser();
+}
+void waitForUser() {
+    printf("Press Enter to return to main menu...");
+    while (getchar() != '\n'); 
+    getchar(); 
     clearScreen();
 }
 
@@ -161,6 +166,7 @@ int main() {
     while (attempt < 3) {
         printf("Please enter password: ");
         scanf("%s", password);
+        while (getchar() != '\n');
         if (strcmp(password, "2025") == 0) {
             break;
         } else {
@@ -177,6 +183,7 @@ int main() {
     // Seat ID validation
     printf("Please enter a 4-digit seat ID (must start with 2): ");
     scanf("%s", id);
+    while (getchar() != '\n');
     if (strlen(id) != 4 || id[0] != '2') {
         printf("Format error, returning to main menu.\n");
         return 0;
@@ -196,9 +203,9 @@ int main() {
             case 'b': {
                 printf(" Please enter the number of seats to book (1~4): ");
                 scanf("%d", &numSeats);
+                while (getchar() != '\n');
                 if (numSeats >= 1 && numSeats <= 4){
                     arrangeForYou(numSeats);
-                    displaySeats();
                 }else{
                     printf("Invalid input! \n");
             }
@@ -207,9 +214,9 @@ int main() {
             case 'c': {
                 printf("Please enter how many seats you want to choose (1~4): ");
                 scanf("%d", &numSeats);
+                while (getchar() != '\n');
                 if (numSeats >= 1 && numSeats <= 4){
                     chooseByYourself(numSeats);
-                    displaySeats();
                 }else{
                     printf("Invalid input! \n");
                 }
@@ -219,6 +226,7 @@ int main() {
                 do {
                     printf("Continue? (y/n): ");
                     scanf(" %c", &continueChoice);
+                    while (getchar() != '\n');
                     if (continueChoice == 'n' || continueChoice == 'N') {
                         printf("System shutting down. Goodbye!\n");
                         return 0;
