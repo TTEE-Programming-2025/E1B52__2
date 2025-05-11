@@ -4,7 +4,6 @@
 #include <string.h>
 
 #define AUTHOR "simon"
- 
 #define ROWS 9
 #define COLS 9
 char seats[ROWS][COLS];
@@ -29,6 +28,11 @@ void printWelcomeScreen() {
     printf("*Please enter the 4-digit password to continue (Password hint: 2025)*\n");
     printf("*                                                                  *\n");
     printf("********************************************************************\n");
+}
+
+// Clear screen
+void clearScreen() {
+    system("cls");      
 }
 
 // Main Menu
@@ -60,14 +64,19 @@ void displaySeats() {
             printf("%c", seats[i][j]);
         printf("\n");
     }
+    printf("\nPress any key to return to main menu...\n");
+    getchar();  
+    getchar();  
+    clearScreen();
 }
 
 void arrangeForYou(int n) {
     int count = 0;
+    int r,c
     srand((unsigned)time(NULL));
     while (count < n) {
-        int r = rand() % ROWS;
-        int c = rand() % COLS;
+        r = rand() % ROWS;
+        c = rand() % COLS;
         if (seats[r][c] == '*') {
             seats[r][c] = '@';
             count++;
@@ -75,12 +84,12 @@ void arrangeForYou(int n) {
     }
 }
 
-
+// Manually choose seats
 void chooseByYourself(int n) {
     int row, col;
     int count = 0;
     while (count < n) {
-    	printf("Enter seat location (row and column):");
+    	printf("Enter seat location (row and column): ");
         scanf("%d %d", &row, &col);
         if (row >= 1 && row <= ROWS && col >= 1 && col <= COLS) {
             if (seats[row - 1][col - 1] == '*') {
@@ -96,7 +105,15 @@ void chooseByYourself(int n) {
 }
 
 int main() {
+	char password[10];
+    char id[10];
+    char choice;
+    int numSeats;
+    char continueChoice;
+    int attempt = 0;
+    
     printWelcomeScreen();
+    
 
     char password[10];
     printf("please enter password: ");
