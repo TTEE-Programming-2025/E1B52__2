@@ -4,8 +4,7 @@
 #include <string.h>
 
 #define AUTHOR "simon"
-
-  
+ 
 #define ROWS 9
 #define COLS 9
 char seats[ROWS][COLS];
@@ -42,19 +41,22 @@ void displayMenu() {
     printf("d. Exit\n");
     printf("-----------------------------\n");
 }
+
 //InitializeSeats
 void initializeSeats() {
-    for (int i = 0; i < ROWS; ++i)
-        for (int j = 0; j < COLS; ++j)
+    int i, j;
+    for (i = 0; i < ROWS; ++i)
+        for (j = 0; j < COLS; ++j)
             seats[i][j] = '*';
 }
 
 //DisplaySeats
 void displaySeats() {
+    int i, j;
     printf(" 123456789\n");
-    for (int i = ROWS - 1; i >= 0; --i) {
+    for (i = ROWS - 1; i >= 0; --i) {
         printf("%d", i + 1);
-        for (int j = 0; j < COLS; ++j)
+        for (j = 0; j < COLS; ++j)
             printf("%c", seats[i][j]);
         printf("\n");
     }
@@ -73,7 +75,7 @@ void arrangeForYou(int n) {
     }
 }
 
-//
+
 void chooseByYourself(int n) {
     int row, col;
     int count = 0;
@@ -97,7 +99,7 @@ int main() {
     printWelcomeScreen();
 
     char password[10];
-    printf("please enter password");
+    printf("please enter password: ");
     scanf("%s", password);
     if (strcmp(password, "2025") != 0) {
         printf(" Incorrect password. End the program \n");
@@ -117,7 +119,7 @@ int main() {
     char option;
      do {
         displayMenu();
-        printf("Please select a function option:");
+        printf("Please select a function option: ");
         scanf(" %c", &option);  
 
         switch (option) {
@@ -126,7 +128,7 @@ int main() {
                 break;
             case 'b': {
                 int n;
-                printf(" Please enter the number of seats to book (1~4):");
+                printf(" Please enter the number of seats to book (1~4): ");
                 scanf("%d", &n);
                 if (n >= 1 && n <= 4)
                     arrangeForYou(n);
@@ -136,7 +138,7 @@ int main() {
             }
             case 'c': {
                 int n;
-                printf("Please enter how many seats you want to choose (1~4)");
+                printf("Please enter how many seats you want to choose (1~4): ");
                 scanf("%d", &n);
                 if (n >= 1 && n <= 4)
                     chooseByYourself(n);
