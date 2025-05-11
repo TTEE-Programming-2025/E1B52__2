@@ -37,8 +37,7 @@ void clearScreen() {
 
 // Main Menu
 void displayMenu() {
-    printf("\n-----------------------------\n");
-    printf("[Booking System]\n");
+    printf("\n----------[Booking System]----------\n");
     printf("a. Available seats\n");
     printf("b. Arrange for you\n");
     printf("c. Choose by yourself\n");
@@ -51,13 +50,27 @@ void initializeSeats() {
     int i, j;
     for (i = 0; i < ROWS; ++i)
         for (j = 0; j < COLS; ++j)
-            seats[i][j] = '*';
+            seats[i][j] = '-';
+            
+    srand((unsigned)time(NULL));
+    int count = 0;
+    while (count < 10) {
+        int r = rand() % ROWS;
+        int c = rand() % COLS;
+        if (seats[r][c] == '-') {
+            seats[r][c] = '*';
+            count++;
+        }
+    }
 }
 
 //DisplaySeats
 void displaySeats() {
     int i, j;
-    printf(" 123456789\n");
+  printf(" \\");
+    for (j = 1; j <= COLS; ++j)
+        printf("%d", j);
+    printf("\n");
     for (i = ROWS - 1; i >= 0; --i) {
         printf("%d", i + 1);
         for (j = 0; j < COLS; ++j)
@@ -65,24 +78,33 @@ void displaySeats() {
         printf("\n");
     }
     printf("\nPress any key to return to main menu...\n");
-    getchar();  
-    getchar();  
+    getchar(); getchar();  
     clearScreen();
 }
 
-void arrangeForYou(int n) {
+void arrangeForYou(int numSeats) {
     int count = 0;
-    int r,c
+    int r, c, i;
     srand((unsigned)time(NULL));
-    while (count < n) {
-        r = rand() % ROWS;
-        c = rand() % COLS;
-        if (seats[r][c] == '*') {
-            seats[r][c] = '@';
-            count++;
+    int found = 0;
+
+   for (r = 0; r < ROWS && !found; ++r) {
+        for (c = 0; c <= COLS - numSeats; ++c) {
+            int available = 1;
+            for (i = 0; i < numSeats; ++i) {
+                if (seats[r][c + i] != '-') {
+                    available = 0;
+                    break;
+                }
+            }
+            if (available) {
+                for (i = 0; i < numSeats; ++i)
+                    seats[r][c + i] = '@';
+                found = 1;
+                break;
+            }
         }
     }
-}
 
 // Manually choose seats
 void chooseByYourself(int n) {
@@ -144,18 +166,17 @@ int main() {
     do {
         displayMenu();
         printf("Please select a function option: ");
-        scanf(" %c", &option);  
+        scanf(" %c", &choice);  
 
-        switch (option) {
+        switch (choice) {
             case 'a':
                 displaySeats();
                 break;
             case 'b': {
-                int n;
                 printf(" Please enter the number of seats to book (1~4): ");
-                scanf("%d", &n);
-                if (n >= 1 && n <= 4){
-                    arrangeForYou(n);
+                scanf("%d", &numSeats);
+                if (numSeats >= 1 && numSeats <= 4){
+                    arrangeForYou(numSeats);
                     displaySeats();
                 }else{
                     printf("Invalid input! \n");
@@ -163,11 +184,10 @@ int main() {
                 break;
             }
             case 'c': {
-                int n;
                 printf("Please enter how many seats you want to choose (1~4): ");
-                scanf("%d", &n);
-                if (n >= 1 && n <= 4){
-                    chooseByYourself(n);
+                scanf("%d", &numSeats);
+                if (numSeats >= 1 && numSeats <= 4){
+                    chooseByYourself(numSeats);
                     displaySeats();
                 }else{
                     printf("Invalid input! \n");
@@ -180,8 +200,18 @@ int main() {
             default:
                 printf("Invalid menu choice.\n");
         }
-    } while (option != 'd');
-    
+        
+        // Ask if the user wants to continue
+        do {
+            printf("Continue (y/n)? ");
+            scanf(" %c", &continueChoice);
+            if (continueChoice != 'y' && continueChoice != 'Y' && continueChoice != 'n' && continueChoice != 'N') {
+                printf("Invalid input. Please enter 'y' or 'n'.\n");
+            }
+        } while (continueChoice != 'y' && continueChoice != 'Y' && continueChoice != 'n' && continueChoice != 'N');
+
+    } while (continueChoice == 'y' || continueChoice == 'Y');
+
     return 0;
 }
 
