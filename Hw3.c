@@ -105,25 +105,46 @@ void arrangeForYou(int numSeats) {
             }
         }
     }
+    displaySeats();
+    char confirm;
+    printf("Do you accept the arrangement? (y/n): ");
+    scanf(" %c", &confirm);
+    if (confirm == 'y' || confirm == 'Y') {
+        for (r = 0; r < ROWS; ++r)
+            for (c = 0; c < COLS; ++c)
+                if (seats[r][c] == '@')
+                    seats[r][c] = '*';
+    } else {
+        for (r = 0; r < ROWS; ++r)
+            for (c = 0; c < COLS; ++c)
+                if (seats[r][c] == '@')
+                    seats[r][c] = '-';
+    }
+    clearScreen();
+}
 
-// Manually choose seats
 void chooseByYourself(int n) {
-    int row, col;
-    int count = 0;
+    int row, col, count = 0;
+     char input[10];
     while (count < n) {
     	printf("Enter seat location (row and column): ");
-        scanf("%d %d", &row, &col);
-        if (row >= 1 && row <= ROWS && col >= 1 && col <= COLS) {
-            if (seats[row - 1][col - 1] == '*') {
+        scanf("%s", input);
+        if (sscanf(input, "%d-%d", &row, &col) == 2 && row >= 1 && row <= ROWS && col >= 1 && col <= COLS) {
+            if (seats[row - 1][col - 1] == '-') {
                 seats[row - 1][col - 1] = '@';
                 count++;
             } else {
                 printf("That seat is already booked. Please choose another one.\n");
             }
         } else {
-            printf("Invalid input. Please enter a seat position between 1 and 9.\n");
+            printf("Invalid input. Please try again\n");
         }
     }
+    displaySeats();
+    for (int i = 0; i < ROWS; ++i)
+        for (int j = 0; j < COLS; ++j)
+            if (seats[i][j] == '@')
+                seats[i][j] = '*';
 }
 
 int main() {
@@ -136,7 +157,6 @@ int main() {
     
     printWelcomeScreen();
     
-
     while (attempt < 3) {
         printf("Please enter password: ");
         scanf("%s", password);
@@ -195,24 +215,26 @@ int main() {
                 break;
             }
             case 'd':
-                printf("The system is shutting down, goodbye¡I\n");
-                return 0;
+                do {
+                    printf("Continue? (y/n): ");
+                    scanf(" %c", &continueChoice);
+                    if (continueChoice == 'n' || continueChoice == 'N') {
+                        printf("System shutting down. Goodbye!\n");
+                        return 0;
+                    } else if (continueChoice == 'y' || continueChoice == 'Y') {
+                        break;
+                    } else {
+                        printf("Invalid input. Please enter 'y' or 'n'.\n");
+                    }
+                } while (1);
+                break;
             default:
                 printf("Invalid menu choice.\n");
         }
-        
-        // Ask if the user wants to continue
-        do {
-            printf("Continue (y/n)? ");
-            scanf(" %c", &continueChoice);
-            if (continueChoice != 'y' && continueChoice != 'Y' && continueChoice != 'n' && continueChoice != 'N') {
-                printf("Invalid input. Please enter 'y' or 'n'.\n");
-            }
-        } while (continueChoice != 'y' && continueChoice != 'Y' && continueChoice != 'n' && continueChoice != 'N');
-
-    } while (continueChoice == 'y' || continueChoice == 'Y');
+    } while (1);
 
     return 0;
 }
+
 
    
