@@ -244,9 +244,11 @@ int main() {
 
     return 0;
 }
-心得:這次的作業我學習到如何利用程式碼去創造一個有邏輯的系統，在寫得過程中往往會遇到格式不對的問題，頻頻修正
-，不過到最後都有順利解決，也讓我對於一步一步撰寫程式碼更加的熟悉，每一步都知道自己改了什麼，如此一來才會更加
-清楚的知道自己不懂的地方在哪裡。 
 
+//Reflection: Through this assignment, I learned how to use code to create a logical system.
+//During the writing process, I often encountered formatting issues and had to constantly make corrections.
+//However, I was able to resolve them in the end, which helped me become more familiar with writing code step by step.
+//I became more aware of the changes I was making at each step, which in turn made it clearer for me to identify the areas I didn’t understand.
+ 
 
    
