@@ -198,3 +198,6 @@ int main() {
 //When writing the main menu item list, I also used the switch statement that I learned earlier. 
 //After completing these four assignments, I’ve become very comfortable with using GitHub.
 //it no longer feels difficult, and it has given me a sense of accomplishment.
+//心得
+//這次的作業，我更加善用了矩陣和函式的應用，在打主選單的項目列表時，也用了之前的switch來撰寫。
+//經過了這四次的作業以後，我已經對git hub 的操作行雲流水，不會感到困難也讓我獲得了成就感。 
