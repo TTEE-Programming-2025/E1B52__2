@@ -74,4 +74,22 @@ void enterStudentGrades(Student student[], int *count) { //Declare a function fo
                students[i].math, students[i].physics, students[i].english, students[i].average);//Displays the student's score and average
     }
 }
+void searchStudent(Student students[], int count) {//A function to search for student information and grades
+    char keyword[50];
+    int found = 0;
+    printf("Enter name or ID to search: ");
+    scanf("%s", keyword);
+    for (int i = 0; i < count; i++) {
+        if (strcmp(students[i].name, keyword) == 0 || strcmp(students[i].id, keyword) == 0) {
+            printf("Student found:\n");
+            printf("Name: %s, ID: %s, Math: %.1f, Physics: %.1f, English: %.1f, Average: %.2f\n",
+                   students[i].name, students[i].id,
+                   students[i].math, students[i].physics, students[i].english, students[i].average);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No matching student found.\n");
+    }
+}
 }
