@@ -119,5 +119,56 @@ void enterStudentGrades(Student student[], int *count) { //Declare a function fo
         return 1;
     return 0;
 }
+    //Enter the password to the main menu 
+    int main() {
+    Student students[MAX_STUDENTS];
+    int studentCount = 0;
+    int inputPassword;
 
+    printWelcomeScreen();
+
+    printf("Enter password: ");
+    scanf("%d", &inputPassword);
+    if (inputPassword != PASSWORD) {
+        printf("Incorrect password. Program will exit.\n");
+        return 0;
+    }
+    //Main menu
+     char option;
+    do {
+        printf("\n--------- [Grade System] ---------\n");
+        printf("a. Enter student grades\n");
+        printf("b. Display student grades\n");
+        printf("c. Search for student grades\n");
+        printf("d. Grade ranking\n");
+        printf("e. Exit system\n");
+        printf("----------------------------------\n");
+        printf("Enter your choice: ");
+        scanf(" %c", &option);
+
+        switch (option) {
+            case 'a':
+                enterStudentGrades(students, &studentCount);
+                break;
+            case 'b':
+                displayStudentGrades(students, studentCount);
+                break;
+            case 'c':
+                searchStudent(students, studentCount);
+                break;
+            case 'd':
+                rankStudents(students, studentCount);
+                break;
+            case 'e':
+                if (confirmExit()) {
+                    printf("Exiting system. Goodbye!\n");
+                    return 0;
+                }
+                break;
+            default:
+                printf("Invalid option. Try again.\n");
+        }
+    } while (1);
+
+    return 0;
 }
