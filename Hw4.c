@@ -110,4 +110,14 @@ void enterStudentGrades(Student student[], int *count) { //Declare a function fo
     printf("Students ranked by average score:\n");
     displayStudentGrades(students, count);
 }
+    //Choice to exit
+    int confirmExit() {
+    char choice;
+    printf("Are you sure you want to exit? (y/n): ");
+    scanf(" %c", &choice);
+    if (choice == 'y' || choice == 'Y')
+        return 1;
+    return 0;
+}
+
 }
