@@ -63,6 +63,15 @@ void enterStudentGrades(Student student[], int *count) { //Declare a function fo
         scanf(" %c", &cont);
      } while (cont == 'y' || cont == 'Y');
 
-
+     printf("Student data entry complete!\n"); 
 	}
+	
+	void displayStudentGrades(Student students[], int count) {
+    printf("Name\tID\t\tMath\tPhysics\tEnglish\tAverage\n");
+    for (int i = 0; i < count; i++) {
+        printf("%s\t%s\t%.1f\t%.1f\t%.1f\t%.2f\n",
+               students[i].name, students[i].id,//Displays the student's name and ID
+               students[i].math, students[i].physics, students[i].english, students[i].average);//Displays the student's score and average
+    }
+}
 }
