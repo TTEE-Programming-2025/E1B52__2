@@ -65,16 +65,17 @@ void enterStudentGrades(Student student[], int *count) { //Declare a function fo
 
      printf("Student data entry complete!\n"); 
 	}
-	
+	//Displays the student's name and ID
 	void displayStudentGrades(Student students[], int count) {
     printf("Name\tID\t\tMath\tPhysics\tEnglish\tAverage\n");
     for (int i = 0; i < count; i++) {
         printf("%s\t%s\t%.1f\t%.1f\t%.1f\t%.2f\n",
-               students[i].name, students[i].id,//Displays the student's name and ID
+               students[i].name, students[i].id,
                students[i].math, students[i].physics, students[i].english, students[i].average);//Displays the student's score and average
     }
 }
-void searchStudent(Student students[], int count) {//A function to search for student information and grades
+    //A function to search for student information and grades
+    void searchStudent(Student students[], int count) {
     char keyword[50];
     int found = 0;
     printf("Enter name or ID to search: ");
@@ -91,5 +92,22 @@ void searchStudent(Student students[], int count) {//A function to search for st
     if (!found) {
         printf("No matching student found.\n");
     }
+}
+    //Compare students' average grades
+    void rankStudents(Student students[], int count) {
+    Student temp;
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (students[j].average > students[i].average ||
+                (students[j].average == students[i].average &&
+                 strcmp(students[j].name, students[i].name) < 0)) {
+                temp = students[i];
+                students[i] = students[j];
+                students[j] = temp;
+            }
+        }
+    }
+    printf("Students ranked by average score:\n");
+    displayStudentGrades(students, count);
 }
 }
