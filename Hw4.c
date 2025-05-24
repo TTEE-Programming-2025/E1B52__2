@@ -162,24 +162,30 @@ int main() {
 
         switch (option) {
             case 'a':
+            	system("cls");
                 enterStudentGrades(students, &studentCount);
                 break;
             case 'b':
+            	system("cls");
                 displayStudentGrades(students, studentCount);
                 break;
             case 'c':
+            	system("cls");
                 searchStudent(students, studentCount);
                 break;
             case 'd':
+            	system("cls");
                 rankStudents(students, studentCount);
                 break;
             case 'e':
+            	system("cls");
                 if (confirmExit()) {
                     printf("Exiting system. Goodbye!\n");
                     return 0;
                 }
                 break;
             default:
+            	system("cls");
                 printf("Invalid option. Try again.\n");
         }
     } while (1);
