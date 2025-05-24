@@ -192,3 +192,9 @@ int main() {
 
     return 0;
 }
+
+//Reflection
+//For this assignment, I made better use of matrices and functions.
+//When writing the main menu item list, I also used the switch statement that I learned earlier. 
+//After completing these four assignments, I¡¦ve become very comfortable with using GitHub.
+//it no longer feels difficult, and it has given me a sense of accomplishment.
