@@ -70,11 +70,11 @@ void enterStudentGrades(Student student[], int *count) {
    //Displays the student's name and ID
 	void displayStudentGrades(Student students[], int count) {
 	int i;
-    printf("Name\tID\t\tMath\tPhysics\tEnglish\tAverage\n");
+    printf("%-10s %-10s %-8s %-8s %-8s %-8s\n", "Name", "ID", "Math", "Physics", "English", "Average");
     for (i = 0; i < count; i++) {
-        printf("%s\t%s\t%.1f\t%.1f\t%.1f\t%.2f\n",
+        printf("%-10s %-10s %-8.1f %-8.1f %-8.1f %-8.2f\n",
                students[i].name, students[i].id,
-               students[i].math, students[i].physics, students[i].english, students[i].average);//Displays the student's score and average
+               students[i].math, students[i].physics, students[i].english, students[i].average);
     }
 }
 
