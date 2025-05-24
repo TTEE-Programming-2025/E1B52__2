@@ -35,3 +35,34 @@ void printWelcomeScreen() {
     printf("*                                                                  *\n");
     printf("********************************************************************\n");
 }
+
+void enterStudentGrades(Student student[], int *count) { //Declare a function for entering student grades
+	char cont;
+	do{
+		if(*count >= MAX_STUDENTS) {
+			printf("Student data limit reached (%d entries).\n", MAX_STUDENTS);
+			break;
+		}
+		
+		printf("Enter data for student #%d:\n", *count + 1);
+        printf("Name: ");
+        scanf("%s", students[*count].name);//Enter all student data and store it in a structure(49-57)
+        printf("Student ID (6 digits): ");
+        scanf("%s", students[*count].id);
+        printf("Math score (0-100): ");
+        scanf("%f", &students[*count].math);
+        printf("Physics score (0-100): ");
+        scanf("%f", &students[*count].physics);
+        printf("English score (0-100): ");
+        scanf("%f", &students[*count].english);
+        
+        students[*count].average = (students[*count].math + students[*count].physics + students[*count].english) / 3.0;
+        (*count)++;
+                   
+        printf("Do you want to enter another student's data? (y/n): ");
+        scanf(" %c", &cont);
+     } while (cont == 'y' || cont == 'Y');
+
+
+	}
+}
