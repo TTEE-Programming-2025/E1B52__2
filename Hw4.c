@@ -66,7 +66,7 @@ void enterStudentGrades(Student student[], int *count) {
     } while (cont == 'y' || cont == 'Y');
 
     printf("Student data entry complete!\n"); 
-   }
+}
    //Displays the student's name and ID
 	void displayStudentGrades(Student students[], int count) {
 	int i;
