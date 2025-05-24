@@ -35,8 +35,8 @@ void printWelcomeScreen() {
     printf("*                                                                  *\n");
     printf("********************************************************************\n");
 }
-
-void enterStudentGrades(Student student[], int *count) { //Declare a function for entering student grades
+//Declare a function for entering student grades
+void enterStudentGrades(Student student[], int *count) { 
 	char cont;
 	do{
 		if(*count >= MAX_STUDENTS) {
